@@ -1,0 +1,84 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}О нас{% endblock %}
+
+{% block add_meta_tags %}
+<meta name="description" content="Разработчики игры ReLife. Подробнее об игре.">
+{% endblock %}
+
+{% block logo_for_page %}
+<img src=" static/users/img/logo_site.jpg" class="rounded bi me-5" alt="logo.svg" width='192' height='65.4'>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="">О нас</h1><br>
+            </div>
+        </div>
+    </section>
+
+    <div class="row py-4 pb-5">
+        <div class="col-lg-4 text-center">
+            <img src="{% static 'users/img/f_c/Shasha_S.jpg' %}"
+                 class="bd-placeholder-img rounded-circle"
+                 alt="Это Соколов Александр, если ты не понял"
+                 width='200' height='200'>
+            <h2 class="fw-normal pt-3">Соколов Александр</h2>
+            <p>Художник</p>
+            <p>
+                <a class="btn btn-outline-primary" href="https://vk.com/limon4ikxaxa">Перейти в профиль</a>
+            </p>
+        </div>
+        <div class="col-lg-4 text-center">
+            <img src="{% static 'users/img/f_c/Vlad_Ch.jpg' %}"
+                 class="bd-placeholder-img rounded-circle"
+                 alt="Это Чернышев Владислав, если ты не понял"
+                 width='200' height='200'>
+            <h2 class="fw-normal pt-3">Чернышев Владислав</h2>
+            <p>Программист</p>
+            <p>
+                <a class="btn btn-outline-primary" href="https://vk.com/vr1_r1">Перейти в профиль</a>
+            </p>
+        </div>
+        <div class="col-lg-4 text-center">
+            <img src="{% static 'users/img/f_c/Vova_R.jpg' %}"
+                 class="bd-placeholder-img rounded-circle"
+                 alt="Это Ромохов Владимир, если ты не понял"
+                 width='200' height='200'>
+            <h2 class="fw-normal pt-3">Ромохов Владимир</h2>
+            <p>Сценарист</p>
+            <p>
+                <a class="btn btn-outline-primary" href="https://vk.com/dolbytnamalno">Перейти в профиль</a>
+            </p>
+        </div>
+    </div><br><br>
+
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5 ps-0">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{% static 'users/img/logo_site.jpg' %}" class="rounded bi me-5 w-100" alt="logo.jpg">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Об игре ReLife</h1><br>
+            <p class="lead">
+                <strong>
+                ReLife - визуальная новелла<br><br>
+                Все действия игры проходят в городе Астрахань и тесно связаны с Лицеем №2<br><br>
+                В игре присутствуют такие персонажи, как:
+                    <a href="https://vk.com/danila.kzntsv" class="links_docs">Данила Казанцев</a>,
+                    <a href="https://vk.com/o_barquinho" class="links_docs">Егор Алексеев</a> и
+                    <a href="https://vk.com/id476485332" class="links_docs">Алан Адилов</a>
+                </strong>
+            </p><br>
+            <a href="{% url 'home' %}#download" class="w-100 btn btn-lg btn-outline-success">Скачать</a>
+            <script>
+              function home_page_redirect(){window.location = '{% url 'home' %}';}
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}

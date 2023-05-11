@@ -1,0 +1,191 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="apple-touch-icon" href="{% static 'users/img/favicon/apple-touch-icon.png' %}" sizes="180x180">
+    <link rel="icon" href="{% static 'users/img/favicon/favicon-32x32.png' %}" sizes="32x32" type="image/jpg">
+    <link rel="icon" href="{% static 'users/img/favicon/favicon-16x16.png' %}" sizes="16x16" type="image/jpg">
+    <link rel="manifest" href="{% static 'users/img/favicon/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'users/img/favicon/safari-pinned-tab.svg' %}" color="#ffffff">
+    <link rel="icon" href="{% static 'users/img/favicon/favicon.ico' %}">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    {% block add_meta_tags %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'users/css/nav_menu.css' %}">
+    {% block add_link %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V89G802H31"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-V89G802H31');
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    
+       ym(90447083, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/90447083" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <link rel="stylesheet" href="{% static 'users/css/base_link.css' %}">
+    {% block add_script %}
+    {% endblock %}
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+    <aside>
+        <header class="p-3 mb-3">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                    <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 align-self-end">
+                        {% block logo_for_page %}{% endblock %}
+                    </a>
+                    {% if user.is_authenticated %}
+                        <div class="dropdown">
+                            <a class="pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar avatar-xl">
+                                    {% if user.account.img %}
+                                        <img class="rounded-circle mb-3" src="/static/users/{{ user.account.img }}" alt=""
+                                             width="50" height="50">
+                                    {% else %}
+                                        <img src="/static/users/img/avatar/standard_avatar.png" alt="avatar - {{ user.username }}"
+                                             class="mb-3 bd-placeholder-img rounded-circle" width="50" height="50">
+                                    {% endif %}
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end px-2 mt-2">
+                                <div class="dropdown-item-text">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar avatar-sm avatar-circle">
+                                            <a href="{% url 'lk' %}">
+                                            {% if user.account.img %}
+                                                <img class="rounded-circle" src="/static/users/{{ user.account.img }}"
+                                                     width="50" height="50">
+                                            {% else %}
+                                                <img src="/static/users/img/avatar/standard_avatar.png" alt="avatar - {{ user.username }}"
+                                                     class="bd-placeholder-img rounded-circle" width="50" height="50">
+                                            {% endif %}
+                                            </a>
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <a href="{% url 'lk' %}" class="dropdown-item rounded">
+                                                <h4 class="mb-0">@{{ user.username }}</h4>
+                                                <p class="card-text">{{ user.email }}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <li><hr class="dropdown-divider"></li>
+                                <li class="mt-1">
+                                    <a href="{% url 'home' %}" title="Главная" class="dropdown-item rounded">Главная</a>
+                                </li>
+                                <li class="mt-1">
+                                    <a href="{% url 'news' %}" title="Новости" class="dropdown-item rounded">Новости</a>
+                                </li>
+                                <li class="mt-1">
+                                    <a href="{% url 'modifications' %}" title="Модификации" class="dropdown-item rounded">Модификации</a>
+                                </li>
+                                <li class="mt-1">
+                                    <a href="{% url 'about' %}" title="О нас" class="dropdown-item rounded">О нас</a>
+                                </li>
+                                <li class="mt-1">
+                                    <a class="dropdown-item rounded" href="{% url 'info' %}" title="Документы">Документы</a>
+                                </li>
+                                {% if user.is_superuser %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item rounded" href="http://127.0.0.1:8000/admin">Админ панель</a></li>
+                                {% endif %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item rounded" href="{% url 'logout' %}" title="Выход">Выйти</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                 class="bi bi-list" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd"
+                                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                          <div class="offcanvas-header">
+                            <h1 class="offcanvas-title" id="offcanvasRightLabel">Меню</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                          </div>
+                          <div class="offcanvas-body">
+                              <div>
+                                  <div class="py-2 pb-4 text-center">
+                                    <a href="{% url 'home' %}" title="Главная" class="links">Главная</a><br><br>
+                                    <a href="{% url 'news' %}" title="Новости" class="links">Новости</a><br><br>
+                                    <a href="{% url 'modifications' %}" title="Модификации" class="links">Модификации</a><br><br>
+                                    <a href="{% url 'about' %}" title="О нас" class="links">О нас</a><br><br>
+                                    <a href="{% url 'info' %}" title="Документы" class="links">Документы</a><br>
+                                  </div>
+                                <hr class="pb-3">
+                                  <div class="d-grid gap-2">
+                                      <a class="btn btn-outline-primary py-1" href="{% url 'login' %}">Войти</a>
+                                      <a class="btn btn-primary my-2" href="{% url 'register' %}">Зарегистрироваться</a>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+    </aside>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+                <a href="{% url 'home' %}" class="mb-3 me-3 mb-md-0 text-muted text-decoration-none lh-1">
+                    <img src="{% static 'users/img/logo_site.jpg' %}" class="bi" alt="logo.svg" width='163.2' height='55.59'>
+                </a>
+                <span class="h5 mt-3 text-muted">© 2021-2023 ReLife</span>
+          </div>
+      
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3">
+                <a class="text-muted" href="https://vk.com/vr1_r1">
+                    <img src="{% static 'users/img/logo/VK_Compact_Logo.jpg' %}" class="bi" alt="logo.svg" width='48' height='48'>
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-muted" href="https://t.me/+VbuMNx8Dnsg0YWQ6">
+                    <img src="{% static 'users/img/logo/Telegram_logo.svg' %}" class="bi" alt="logo.svg" width='48' height='48'>
+                </a>
+            </li>
+          </ul>
+        </footer>
+      </div>
+</body>
+</html>

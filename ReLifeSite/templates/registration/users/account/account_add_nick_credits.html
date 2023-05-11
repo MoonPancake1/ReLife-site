@@ -1,0 +1,44 @@
+<!--    user = request.user.account-->
+<!--    form = AddUserInCreditsForms(instance=user)-->
+<!--    success_message = ''-->
+<!--    if request.method == 'POST':-->
+<!--        form = AddUserInCreditsForms(request.POST, instance=user)-->
+<!--        if form.is_valid():-->
+<!--            form.save()-->
+<!--            success_message = 'Ник успешно сохранён!'-->
+<!--            print(success_message)-->
+<!--            return redirect('lk')-->
+
+<!--    context = {-->
+<!--        'form': form,-->
+<!--        'success_message': success_message,-->
+<!--    }-->
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Ник в титры{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="py-5 my-5 text-center">
+            <div class='text-center mb-2'>
+                <h1>Заявка на добавление ника в титры</h1><br>
+            </div>
+            <div class="col-lg-10 mx-auto">
+                <p class="lead mb-4 mt-2">
+                    Подать заявку на добавление вашего ника в титры игры
+                </p>
+                <div class="col-lg-8 mx-auto py-2">
+                    {{ form.nick_in_credits }}
+                </div><br>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <input type="submit" value="Сохранить" class="btn btn-success" name="_save">
+                    <a class="btn btn-outline-secondary" href="{% url 'lk' %}">Вернуться назад</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

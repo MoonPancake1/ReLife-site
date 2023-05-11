@@ -1,0 +1,39 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Дополнительно{% endblock %}
+
+{% block add_meta_tags %}
+<meta name="description" content="Документы для пользователей сайта. Политика конфиденциальности и Пользовательское соглашение.">
+{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-4">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="">Дополнительно</h1><br>
+        </div>
+        <p class="lead">Здесь вы можете ознакомиться со всеми правилами сайта</p>
+    </div>
+</section>
+<div class="row pb-5">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <h5 class="card-title">Политика конфиденциальности</h5>
+        <p class="card-text lead">В этом документе вы можете узнать, какие данные мы собираем для более качественного обслуживания сайта</p>
+        <a href="{% url 'privacy_policy' %}" class="btn btn-primary">Ознакомиться</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <h5 class="card-title">Пользовательское соглашение</h5>
+        <p class="card-text lead">В этом документе вы можете узнать, как вы можете пользоваться сайтом</p>
+        <a href="{% url 'user_agreement' %}" class="btn btn-primary">Ознакомиться</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

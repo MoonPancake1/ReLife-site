@@ -1,0 +1,74 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Добавить модификацию{% endblock %}
+
+{% block add_link %}
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+{% endblock %}
+
+{% block logo_for_page %}
+<img src=" static/users/img/logo_site.jpg" class="rounded bi me-5" alt="logo.svg" width='192' height='65.4'>
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container">
+            <div class="text-center">
+                <h1>Добавить модификацию</h1>
+            </div><br>
+
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <div>
+                    <fieldset class="module aligned">
+                        <div class="form-row field-title mb-3">
+                            <div>
+                                <label class="form-label" for="id_title">Название модификации:</label>
+                                {{ form.title }}
+                            </div>
+                        </div>
+                        <div class="form-row field-description mb-3">
+                            <div>
+                                <label class="form-label" for="id_description">Описание модификации:</label>
+                                {{ form.description }}
+                            </div>
+                        </div>
+                        <div class="form-row field-author mb-3">
+                            <div>
+                                <label class="form-label" for="id_author">Автор(ы) модификации:</label>
+                                {{ form.author }}
+                            </div>
+                        </div>
+                        <div class="form-row field-img mb-4">
+                            <div>
+                                <label class="form-label" for="formFile">Превью:</label>
+                                {{ form.img_mod }}
+                            </div>
+                        </div>
+                        <div class="form-row field-img mb-3">
+                            <div>
+                                <label class="form-label" for="formFile">Модификация (<a href="{% url 'modifications_info' %}">Как создать?</a>):</label>
+                                {{ form.mod }}
+                            </div>
+                        </div><br>
+                    </fieldset>
+                    <div class="submit-row">
+                        <input type="submit" value="Отправить на модерацию" class="btn btn-success" name="_save">
+                    </div>
+                    <span>{{ error }}</span>
+                    <script id="django-admin-form-add-constants" src="/static/users/js/change_form.js" data-model-name="nov" async="">
+                    </script>
+                    <script id="django-admin-prepopulated-fields-constants" src="/static/users/js/prepopulate_init.js" data-prepopulated-fields="[]">
+                    </script>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="text-center py-4">
+                <h3>Вам необходимо зарегистрироваться! <a href="{% url 'register' %}">Пройти регистрацию</a></h3>
+            </div><br>
+        </div>
+    {% endif %}
+{% endblock %}

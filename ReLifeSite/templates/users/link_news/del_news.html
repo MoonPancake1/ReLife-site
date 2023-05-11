@@ -1,0 +1,29 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Удалить новость{% endblock %}
+
+{% block add_link %}
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+{% endblock %}
+
+{% block logo_for_page %}
+<img src="{% static 'users/img/logo_site.jpg' %}" class="rounded bi me-5" alt="logo.svg" width='192' height='65.4'>
+{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-5 lg-2">
+        <div class="mx-auto">
+            <h1 class="">Удалить новость: "{{ news.title }}" ?</h1><br>
+        </div>
+        <form method="POST" action="{% url 'news_del' news.link_news %}">
+            {% csrf_token %}
+
+            <a class="btn btn-secondary" href="{% url 'news_edit' news.link_news %}">Отмена</a>
+
+            <input class="btn btn-danger" value="Удалить" type="submit" name="Confirm">
+        </form>
+    </div>
+</section>
+{% endblock %}

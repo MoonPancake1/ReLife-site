@@ -1,0 +1,11 @@
+venv
+.idea
+*.pyc
+__pycache__/
+.env
+other.txt
+*.sqlite3
+settings.py
+BetaNovel.rar
+ReLife_setup.exe
+ReLife.apk

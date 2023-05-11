@@ -1,0 +1,224 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block add_meta_tags %}
+<meta name="description" content="Главная страница сайта игры ReLife.">
+{% endblock %}
+
+{% block add_link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+<link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+{% endblock %}
+
+{% block add_script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.js"></script>
+{% endblock %}
+
+{% block style %}
+<style>
+.image img {
+        filter: brightness(65%)
+}
+
+.gradient {
+    display: inline-block;
+    position: relative;
+    line-height: 0;
+}
+
+.gradient:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    background-image: linear-gradient(to top, #000, rgba(255, 255, 255, 0));
+    opacity: 0.4;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="8000">
+          <a class="gradient" href="#">
+            <img src="{% static 'users/img/news/Anonce_comp.jpg' %}" class="rounded d-block w-100">
+          </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Анонс игры</h2>
+            <p class="lead"><strong>Началась активная работа на игрой</strong></p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="8000">
+          <a class="gradient" href="#">
+            <img src="{% static 'users/img/news/Alpha_version_comp.jpg' %}" class="rounded d-block w-100">
+          </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Выход альфа версии игры</h2>
+            <p class="lead"><strong>Мы выпустили альфа версию игры, в которую вы уже можете поиграть!</strong></p>
+          </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container col-xxl-11 px-4 py-5" id="download">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static 'users/img/Alpha version_1.jpg' %}" class="rounded d-block mx-lg-auto img-fluid" alt="" width="500" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Скачать ReLife v0.3</h1><br>
+        <p class="lead">Данная версия игры создана для первоначальной демонстрации примерного сюжета, персонажей, задних планов и т.д.</p>
+        <p class="lead">Дата выхода бета-версии назначена на <strong>31 января 2023 года</strong></p><br>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="button"
+                  class="btn btn-outline-success btn-lg px-4 me-md-2"
+                  onclick="download_game_redirect();">
+              Скачать для
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="20" height="20" fill="currentColor"
+                   class="bi bi-windows ms-2" viewBox="0 0 16 16">
+                  <path d="M6.555 1.375 0 2.237v5.45h6.555V1.375zM0 13.795l6.555.933V8.313H0v5.482zm7.278-5.4.026 6.378L16 16V8.395H7.278zM16 0 7.33 1.244v6.414H16V0z"/>
+              </svg>
+          </button>
+          <script>
+          function download_game_redirect(){window.location = '{% static 'users/game/ReLife_setup.exe' %}';}
+          </script>
+          <button type="button"
+                  class="btn btn-outline-success btn-lg px-4 me-md-2"
+                  onclick="download_game_redirect();">
+              Скачать для
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="20" height="20" fill="currentColor"
+                   class="bi bi-android2 ms-1" viewBox="0 0 16 16">
+                  <path d="m10.213 1.471.691-1.26c.046-.083.03-.147-.048-.192-.085-.038-.15-.019-.195.058l-.7 1.27A4.832 4.832 0 0 0 8.005.941c-.688 0-1.34.135-1.956.404l-.7-1.27C5.303 0 5.239-.018 5.154.02c-.078.046-.094.11-.049.193l.691 1.259a4.25 4.25 0 0 0-1.673 1.476A3.697 3.697 0 0 0 3.5 5.02h9c0-.75-.208-1.44-.623-2.072a4.266 4.266 0 0 0-1.664-1.476ZM6.22 3.303a.367.367 0 0 1-.267.11.35.35 0 0 1-.263-.11.366.366 0 0 1-.107-.264.37.37 0 0 1 .107-.265.351.351 0 0 1 .263-.11c.103 0 .193.037.267.11a.36.36 0 0 1 .112.265.36.36 0 0 1-.112.264Zm4.101 0a.351.351 0 0 1-.262.11.366.366 0 0 1-.268-.11.358.358 0 0 1-.112-.264c0-.103.037-.191.112-.265a.367.367 0 0 1 .268-.11c.104 0 .19.037.262.11a.367.367 0 0 1 .107.265c0 .102-.035.19-.107.264ZM3.5 11.77c0 .294.104.544.311.75.208.204.46.307.76.307h.758l.01 2.182c0 .276.097.51.292.703a.961.961 0 0 0 .7.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h1.343v2.182c0 .276.097.51.292.703a.972.972 0 0 0 .71.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h.76c.291 0 .54-.103.749-.308.207-.205.311-.455.311-.75V5.365h-9v6.404Zm10.495-6.587a.983.983 0 0 0-.702.278.91.91 0 0 0-.293.685v4.063c0 .271.098.501.293.69a.97.97 0 0 0 .702.284c.28 0 .517-.095.712-.284a.924.924 0 0 0 .293-.69V6.146a.91.91 0 0 0-.293-.685.995.995 0 0 0-.712-.278Zm-12.702.283a.985.985 0 0 1 .712-.283c.273 0 .507.094.702.283a.913.913 0 0 1 .293.68v4.063a.932.932 0 0 1-.288.69.97.97 0 0 1-.707.284.986.986 0 0 1-.712-.284.924.924 0 0 1-.293-.69V6.146c0-.264.098-.491.293-.68Z"></path>
+              </svg>
+          </button>
+          <script>
+          function download_game_redirect(){window.location = '{% static 'users/game/ReLife.apk' %}';}
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if user.is_superuser %}
+  <div class="pricing-header pt-3 p-3 pb-md-4 mx-auto text-center">
+      <h4 class="display-6 pb-4 fw-normal">Уровни спонсорства (Видно только администрации)</h4>
+      <p class="fs-5 text-muted">Любой пользователь может свободно установить игру на своё устройство
+          и бесплатно поиграть, но нам так же нужно поддерживать работоспособность сайта, приобретая
+          серверные мощности для обеспечения бесперебойной работы. А так же оплачивать возможность использования
+          некоторых медиа файлов в нашей игре</p>
+  </div>
+  <main>
+    <div class="row row-cols-1 pt-3 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Бесплатно</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">0 ₽</h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li class="mb-1">Игра на все доступные платформы</li>
+              <li class="mb-1">Возможность добавить свой ник в титры игры</li>
+              <li class="mb-1">Комментировать новости</li>
+            </ul>
+            <a href="{% url 'home' %}#download" class="w-100 btn btn-lg btn-outline-primary">Скачать</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Спонсор</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">99 ₽</h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li class="mb-1">Все стандартные возможности</li>
+              <li class="mb-1">Возможность создавать модификации к игре</li>
+                <li class="mb-1">Префикс <font color="#4F6AE3">[Спонсор]</font></li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Поддержать</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Ангел</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">249 ₽</h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li class="mb-1">Все возможности спонсора</li>
+              <li class="mb-1">Все медиа материалы игры</li>
+              <li class="mb-1">Возможность узнать процесс создания проекта</li>
+              <li class="mb-1">Префикс <font color="#D14543">[Ангел]</font></li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Поддержать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <canvas id="myChart" width="400" height="100"></canvas>
+    <script>
+    var df = {{ df|safe }}
+    var df1 = {{ df1|safe }}
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: df1,
+            datasets: [{
+                label: 'Стоимость проекта',
+                data: df,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            animations: {
+              radius: {
+                duration: 400,
+                easing: 'linear',
+                loop: (context) => context.active
+              }
+            },
+            responsive: true,
+            plugins: {
+              tooltip: {
+                mode: 'index',
+                intersect: false
+              },
+            },
+        }
+    });
+    </script>
+  {% endif %}
+  </main>
+{% endblock %}

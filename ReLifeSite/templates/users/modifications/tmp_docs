@@ -1,0 +1,50 @@
+<div class="accordion pb-5" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Начало создания модификации
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <br>
+                    <p>Для начала, вам нужно установить программы для работы над модификацией, вот несколько из них:</p>
+                    <br>
+                    <p>1. <a href="https://www.gimp.org/">GIMP</a> — фоторедактор</p>
+                    <p>2. <a href="https://www.audacityteam.org/">Audacity</a> — аудиоредактор</p>
+                    <p>3. <a href="https://code.visualstudio.com/">Visual Studio Code</a> — редактор кода</p>
+                    <p>4. <a href="https://www.renpy.org/">Ren'py</a> — игровой движок для создания визуальной новеллы</p>
+                    <p>5. MindMap2 — Нужна для создания сюжета в виде блок-схем. Программа есть только в Google Drive, как её установить: <a href="https://youtu.be/b7DXuzQapcQ?t=317">инструкция</a></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Процесс создания новеллы-модификации
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <br>
+                    <p>Итак, вы всё установили и подготовили своё рабочее пространство. Теперь вам нужен сюжет. Как его написать?</p>
+                    <p>Существует целый бесплатный курс от <a href="https://www.khanacademy.org/computing/pixar">Pixar</a>, но он на Английском языке (как и все популярные курсы). Поэтому, предлагаю вам видео одно русскоязычного видеоблогера, который вкратце пересказывает этот курс:
+                        <a href="https://www.youtube.com/watch?v=oXBSXBRrNOY&list=PLYU2dsNxZ7IQ-7eFJrB-Wrn3TZFZUjtdN&index=13">видео</a></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Accordion Item #3
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+            </div>
+        </div>
+    </div>

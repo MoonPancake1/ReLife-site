@@ -1,0 +1,69 @@
+{% extends 'registration/base_registration.html' %}
+{% load static %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+{% if form.errors %}
+    <p>{{ form.errors.error }}</p>
+{% endif %}
+
+<main class="form-signin w-100 m-auto">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ form.error }}
+        </div>
+    {% endif %}
+    <form action="{% url 'login' %}" method="post">
+        <a href="/">
+            <img src="{% static 'users/img/logo_site.jpg' %}" class="mb-4"  width="249.6" height="85">
+        </a>
+
+        <h1 class="h3 mb-4 mt-2 fw-normal">Авторизация</h1>
+
+        <div class="form-floating">
+            <input 
+            type="text" 
+            name="username" 
+            autofocus autocapitalize="none" autocomplete="username" 
+            maxlength="150" 
+            required id="id_username" 
+            class="form-control" 
+            placeholder="Login" 
+            id="floatingInput">
+            <label for="floatingInput">Логин</label>
+        </div>
+
+        <div class="form-floating">
+            <input 
+            type="password" 
+            name="password" 
+            autocomplete="current-password" 
+            required id="id_password" 
+            class="form-control" 
+            placeholder="Password" 
+            id="floatingPassword">
+            <label for="id_password">Пароль</label>
+        </div><br>
+
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-success me-2">Войти</button>
+
+        <button type="button" class="btn btn-outline-danger" onclick="password_reset_redirect();">Забыли пароль?</button>
+        <script>
+        function password_reset_redirect(){window.location = '{% url 'password_reset' %}';}
+        </script>
+
+        <p class="mt-3">или</p>
+
+        <button type="button" class="btn btn-outline-primary" onclick="register_redirect();">Зарегистрироваться</button>
+        <script>
+        function register_redirect(){window.location = '{% url 'register' %}';}
+        </script><br>
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2021–2023 ReLife</p>
+
+    </form>
+</main>
+{% endblock %}

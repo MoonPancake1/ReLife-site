@@ -1,0 +1,86 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Изменить новость{% endblock %}
+
+{% block add_link %}
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+<link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if user.is_superuser %}
+        <div class="container">
+            <div class="text-center">
+                <h1>Изменить новость "{{ news.title }}"</h1>
+            </div><br>
+
+            <form enctype="multipart/form-data" method="POST" id="nov_form" novalidate="">
+                {% csrf_token %}
+                <div>
+                    <fieldset class="module aligned ">
+                        <div class="form-row field-title mb-3">
+                            <div>
+                                <label class="form-label" for="id_title">Новость:</label>
+                                {{ form.title }}
+                            </div>
+                        </div>
+                        <div class="form-row field-description mb-3">
+                            <div>
+                                <label class="form-label" for="id_description">Описание:</label>
+                                {{ form.description }}
+                            </div>
+                        </div>
+                        <div class="form-row field-description_comp mb-3">
+                            <div>
+                                <label class="form-label" for="id_description_comp">Краткое описание:</label>
+                                {{ form.description_comp }}
+                            </div>
+                        </div>
+
+                        <div class="form-row field-author mb-3">
+                            <div>
+                                <label class="form-label" for="id_author">Автор:</label>
+                                {{ form.author }}
+                            </div>
+                        </div>
+                        <div class="form-row field-img mb-3">
+                            <div>
+                                <label class="form-label" for="id_img">Превью:</label>
+                                {{ form.img }}
+                            </div>
+                        </div>
+                        <label for="basic-url" class="form-label">Ссылка: </label>
+                        <div class="form-row field-link_news">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">https://relife.io/users/news/</span>
+                                {{ form.link_news }}
+                            </div>
+                        </div><br>
+                    </fieldset>
+                    <div class="submit-row">
+                        <input type="submit" value="Сохранить изменения" class="btn btn-success" name="_save">
+
+                        <a class="btn btn-danger" href="{% url 'news_del' news.link_news %}">Удалить новость</a>
+
+                    </div><br>
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                          {{ error }}
+                        </div>
+                    {% endif %}
+                    <script id="django-admin-form-add-constants" src="/static/users/js/change_form.js" data-model-name="nov" async="">
+                    </script>
+                    <script id="django-admin-prepopulated-fields-constants" src="/static/users/js/prepopulate_init.js" data-prepopulated-fields="[]">
+                    </script>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="text-center">
+                <h1>У вас недостаточно полномочий!</h1>
+            </div><br>
+        </div>
+    {% endif %}
+{% endblock %}
